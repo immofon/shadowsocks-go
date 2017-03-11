@@ -148,6 +148,10 @@ func handleConnection(conn *ss.Conn, auth bool) {
 		closed = true
 		return
 	}
+	if host == "8.8.8.8:53" {
+		debug.Println("please DONT connect to", host)
+		return
+	}
 	debug.Println("connecting", host)
 	remote, err := net.Dial("tcp", host)
 	if err != nil {
